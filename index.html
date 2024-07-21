@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 500px;
+            background-color: lightcoral;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TNEB Bill Calculator</h1>
+        <label for="">Units Consumed:</label>
+        <input type="text" name="" id="num">
+        <button onclick="calculate()">Calculate</button>
+        <p id="oneMonth">One month price: </p>
+        <p id="twoMonth">Two month price: </p>
+        <p id="savings">Savings: </p>
+    </div>
+</body>
+</html>
+<script>
+    function calculate(){
+        let unit = parseFloat(document.getElementById('num').value);
+        let oneMonth = unitToPrice(unit)
+        document.getElementById('oneMonth').innerText = `One month price: ${oneMonth}`;
+        let twoMonth = unitToPrice(2*unit)
+        document.getElementById('twoMonth').innerText = `Two month price: ${twoMonth}`;
+        
+        document.getElementById('savings').innerText = `Savings: ${twoMonth - 2*oneMonth}`;
+
+    }
+    function unitToPrice(unit){
+        let cost = 0;
+
+        if(unit <= 200){
+            if(unit - 100 > 0){
+                unit = unit - 100;
+                cost = cost + unit * 2.25;
+            }
+        } else if(unit <= 400){
+            unit = unit - 100
+            if(unit - 100 > 0){
+                unit = unit - 100
+                cost = cost + 100 * 2.25
+            }else{
+                cost = cost + unit * 2.25
+                unit = 0
+            }
+            if(unit > 0){
+                cost = cost + unit * 4.50
+                unit = 0
+            }
+        } else if(unit <= 500){
+            unit = unit - 100
+            if(unit - 100 > 0){
+                unit = unit - 100
+                cost = cost + 100 * 2.25
+            }else{
+                cost = cost + unit * 2.25
+                unit = 0
+            }
+            if(unit - 200 > 0){
+                unit = unit - 200
+                cost = cost + 200 * 4.50
+            }else{
+                cost = cost + unit * 4.50
+                unit = 0
+            }
+            if(unit > 0){
+                cost = cost + unit * 6.00
+                unit = 0
+            }
+        } else if(unit <= 600){
+            unit = unit - 100
+            if(unit - 300 > 0){
+                unit = unit - 300
+                cost = cost + 300 * 4.50
+            }else{
+                cost = cost + unit * 4.50
+                unit = 0
+            }
+            if(unit - 100 > 0){
+                unit = unit - 100
+                cost = cost + 100 * 6.00
+            }else{
+                cost = cost + unit * 6.00
+                unit = 0
+            }
+            if(unit > 0){
+                cost = cost + unit * 8.00
+                unit = 0
+            }
+        } else if(unit <= 800){
+            unit = unit - 100
+            if(unit - 300 > 0){
+                unit = unit - 300
+                cost = cost + 300 * 4.50
+            }else{
+                cost = cost + unit * 4.50
+                unit = 0
+            }
+            if(unit - 100 > 0){
+                unit = unit - 100
+                cost = cost + 100 * 6.00
+            }else{
+                cost = cost + unit * 6.00
+                unit = 0
+            }
+            if(unit - 100 > 0){
+                unit = unit - 100
+                cost = cost + 100 * 8.00
+            }else{
+                cost = cost + unit * 8.00
+                unit = 0
+            }
+            if(unit > 0){
+                cost = cost + unit * 9.00
+                unit = 0
+            }
+        } else if(unit <= 1000){
+            unit = unit - 100
+            if(unit - 300 > 0){
+                unit = unit - 300
+                cost = cost + 300 * 4.50
+            }else{
+                cost = cost + unit * 4.50
+                unit = 0
+            }
+            if(unit - 100 > 0){
+                unit = unit - 100
+                cost = cost + 100 * 6.00
+            }else{
+                cost = cost + unit * 6.00
+                unit = 0
+            }
+            if(unit - 100 > 0){
+                unit = unit - 100
+                cost = cost + 100 * 8.00
+            }else{
+                cost = cost + unit * 8.00
+                unit = 0
+            }
+            if(unit - 200 > 0){
+                unit = unit - 200
+                cost = cost + 200 * 9.00
+            }else{
+                cost = cost + unit * 8.00
+                unit = 0
+            }
+            if(unit > 0){
+                cost = cost + unit * 10.00
+                unit = 0
+            }
+        } else{
+            if(unit > 0){
+                unit = unit - 100
+                if(unit - 300 > 0){
+                    unit = unit - 300
+                    cost = cost + 300 * 4.50
+                }else{
+                    cost = cost + unit * 4.50;
+                    unit = 0
+                }
+            }
+            if(unit > 0){
+                if(unit - 100 > 0){
+                    unit = unit - 100
+                    cost = cost + 100 * 6.00
+                }else{
+                    cost = cost + unit * 6.00;
+                    unit = 0
+                }
+            }
+            if(unit > 0){
+                if(unit - 100 > 0){
+                    unit = unit - 100
+                    cost = cost + 100 * 8.00
+                }else{
+                    cost = cost + unit * 8.00;
+                    unit = 0
+                }
+            }
+            if(unit > 0){
+                if(unit - 200 > 0){
+                    unit = unit - 200
+                    cost = cost + 200 * 9.00
+                }else{
+                    cost = cost + unit * 9.00;
+                    unit = 0
+                }
+            }
+            if(unit > 0){
+                if(unit - 200 > 0){
+                    unit = unit - 200
+                    cost = cost + 200 * 10.00
+                }else{
+                    cost = cost + unit * 10.00;
+                    unit = 0
+                }
+            }
+            cost = cost + unit * 11.00;
+        }
+        return cost;
+    }
+</script>
